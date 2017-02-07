@@ -1,0 +1,9 @@
+<!doctype html>
+<link rel="stylesheet" href="{{ url_for('static', filename='welcome.css') }}">
+<title>Hello from Flask</title>
+{% if name %}
+  <h1>Hello {{ name }}!,这是templates模版</h1>
+{% else %}
+  <h1>Hello, World!</h1>
+{% endif %}
+
