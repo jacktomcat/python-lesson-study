@@ -5,6 +5,7 @@ from flask import redirect
 from flask import url_for
 from flask import jsonify,json
 from User import User
+from modules.Employee import Employee
 
 app = Flask(__name__)
 
@@ -41,6 +42,8 @@ def get_current_user():
     """user = User(1,'zhuhh','jackjboss@163.com')
     user1 = User(2,'zhuhh2','jackjboss2@163.com')
     user2 = User(3,'zhuhh3','jackjboss3@163.com')"""
+    emp = Employee()
+    print (emp.displayCount)
     user={"id":1,"email":"jackjboss1@163.com","name":"zhuhh1"}
     user1={"id":2,"email":"jackjboss2@163.com","name":"zhuhh2"}
     user2={"id":3,"email":"jackjboss3@163.com","name":"zhuhh3"}
