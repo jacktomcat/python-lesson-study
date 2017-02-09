@@ -1,5 +1,5 @@
 
-class Employee:
+class employee:
 
-  def displayCount():
+  def shows(self):
       return "Total Employee"
