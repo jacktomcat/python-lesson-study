@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -5,8 +6,9 @@ from flask import redirect
 from flask import url_for
 from flask import jsonify,json
 from user import User
-from flask_sqlalchemy import SQLAlchemy
+from flask.ext.sqlalchemy import SQLAlchemy
 from modules.employee import Employee
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] ='jackjboss'
@@ -62,18 +64,23 @@ def get_current_user():
     #return json.dumps(tasks)          
 @app.route('/roles/getRoles')
 def getRoles():
-  Role.query.all()
-  return 'get roles'
+  json_roles=[]
+  roles = Role.query.all()
+  for role in roles:
+    r = {"id":role.id,"name":role.name}
+    json_roles.append(r)
+    print "ID=",role.id,",姓名=",role.name
+  return jsonify(json_roles) 
 
 
 class Role(db.Model):
-     __tablename__ = 'roles'
-     id = db.Column(db.Integer,primary_key=True)
-     name = db.Column(db.String(64),unique=True)
+      __tablename__ = 'roles'
+      id = db.Column(db.Integer,primary_key=True)
+      name = db.Column(db.String(64),unique=True)
      #user = db.relationship('User',backref='role',lazy='dynamic')#建立两表之间的关系，其中backref是定义反向关系，lazy是禁止自动执行查询（什么鬼？）
 
-     def __repr__(self):
-      return '<Role {}> '.format(self.name)
+    # def __repr__(self):
+    #  return '<Role {}> '.format(self.name)
 
 
 if __name__ == '__main__':
