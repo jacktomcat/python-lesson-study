@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from modules.employee import Employee
+from employee import Employee
 
 #继承关系，可以多继承  User(Employee,Parent)
 class User(Employee):

@@ -5,9 +5,8 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from flask import jsonify,json
-from user import User
+from modules.user import User
 from flask.ext.sqlalchemy import SQLAlchemy
-from modules.employee import Employee
 
 
 app = Flask(__name__)
