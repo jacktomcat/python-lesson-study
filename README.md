@@ -1,8 +1,29 @@
 # python-lesson-study
 python 自学练习
 
-### 在项目跟目录下面执行，创建虚拟环境，然后生成venv/bin/xxx
-1: virtualenv venv <br />
-2: 然后source venv/bin/activate 就可以激活并看到venv的环境了<br/>
-3: export FLASK_APP=hello.py<br/>
-4: flask run  然后就可以访问5000端口
+### 在项目跟目录下面执行，创建虚拟环境<br />
+安装：  <br />
+    brew install pyenv  <br />
+
+安装virtualenv：<br />
+    git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv <br />
+
+配置环境变量：<br />
+    export PYENV_ROOT="$HOME/.pyenv"  <br />
+    export PATH="$PYENV_ROOT/bin:$PATH"  <br />
+    eval "$(pyenv init -)"  <br />
+    eval "$(pyenv virtualenv-init -)" <br />
+
+安装python版本、设置虚拟环境：<br />
+    1: pyenv install 2.7.10<br />
+    2: pyenv virtualenv 2.7.10 venv-2.7.10<br />
+    3: pyenv versions<br />
+    4: pyenv activate venv-2.7.10   激活venv-2.7.10 虚拟环境<br />
+       此时查看python version是2.7.10<br />
+
+    5: pip install -r requirements.txt   安装工程需要的依赖 <br />
+    6: export FLASK_APP=index.py <br />
+    7: flask run <br />
+
+停用虚拟环境：    <br />
+    1: pyenv deactivate venv-2.7.10      停用 venv-2.7.10 虚拟环境<br />
