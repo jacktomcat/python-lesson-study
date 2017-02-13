@@ -18,8 +18,9 @@ python 自学练习
     1: pyenv install 2.7.10<br />
     2: pyenv virtualenv 2.7.10 venv-2.7.10<br />
     3: pyenv versions<br />
-    4: pyenv activate venv-2.7.10   激活venv-2.7.10 虚拟环境<br />
-       此时查看python version是2.7.10<br />
+    4: pyenv activate venv-2.7.10   激活venv-2.7.10 虚拟环境 此时查看<br />  
+    `python version`
+    `2.7.10`
 
     5: pip install -r requirements.txt   安装工程需要的依赖 <br />
     6: export FLASK_APP=index.py <br />
