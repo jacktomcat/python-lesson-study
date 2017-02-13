@@ -2,7 +2,7 @@
 python 自学练习
 
 ### 在项目跟目录下面执行，创建虚拟环境<br />
-安装：  <br />
+安装pyenv：  <br />
     brew install pyenv  <br />
 
 安装virtualenv：<br />
@@ -22,9 +22,9 @@ python 自学练习
     `python version`
     `2.7.10`
 
-    5: pip install -r requirements.txt   安装工程需要的依赖 <br />
-    6: export FLASK_APP=index.py <br />
-    7: flask run <br />
+    5: pip install -r requirements.txt   安装工程需要的依赖
+    6: export FLASK_APP=index.py
+    7: flask run
 
 停用虚拟环境：    <br />
     1: pyenv deactivate venv-2.7.10      停用 venv-2.7.10 虚拟环境<br />
