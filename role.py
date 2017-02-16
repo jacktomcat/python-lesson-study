@@ -24,12 +24,17 @@ def getRoles():
   return jsonify(json_roles) 
 
 """这里展示
-      1:按id查询
+      1:按id查询,并展示了一对多的场景，查询role并查询下面的所有资源信息
 """
 @app.route('/roles/<int:id>')
 def getRoleById(id):
   role = Role.query.get(id)
-  r = {"id":role.id,"name":role.name}
+
+  resources = []
+  for rr in role.resource:
+    res = {"id":rr.id,"resource_name":rr.resource_name}
+    resources.append(res)
+  r = {"id":role.id,"name":role.name,"resources":resources}
   print "ID=",role.id,",姓名=",role.name
   return jsonify(r)
 
@@ -81,7 +86,15 @@ class Role(db.Model):
       __tablename__ = 'roles'
       id = db.Column(db.Integer,primary_key=True)
       name = db.Column(db.String(64),unique=True)
-     #user = db.relationship('User',backref='role',lazy='dynamic')#建立两表之间的关系，其中backref是定义反向关系，lazy是禁止自动执行查询（什么鬼？）
+      #建立两表之间的关系，其中backref是定义反向关系，lazy是禁止自动执行查询（什么鬼？）
+      resource = db.relationship('Resource', backref='roles',lazy='dynamic',primaryjoin="Role.id == Resource.role_id") 
 
     # def __repr__(self):
     #  return '<Role {}> '.format(self.name)
+
+class Resource(db.Model):
+      __tablename__ = 'resource'
+      id = db.Column(db.Integer,primary_key=True)
+      resource_name = db.Column(db.String(64))
+      remark = db.Column(db.String(64))
+      role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
